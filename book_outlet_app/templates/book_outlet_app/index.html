@@ -1,0 +1,25 @@
+{%extends "book_outlet_app/base.html"%}
+
+{%block title%}
+    All Books
+{%endblock%}
+
+{% block content%}
+    <ul>
+        {%for book in books%}
+        <li> <a href=" 
+            
+            {% comment %} {% url 'book-detail' book.id %}  {% endcomment %}
+            {% comment %} used a built-in django get_absolute_url to direct to url {% endcomment %}
+            {{book.get_absolute_url}} 
+            
+            "> {{ book.title }} </a>
+            (Rating: {{book.rating}})</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <p>Total Number of Books: {{total_number_of_books}} </p>
+    <p> Average Rating: {{average_rating.rating__avg}} </p>
+{%endblock%}
